@@ -1,0 +1,43 @@
+[tool.ruff]
+# Target Python version
+target-version = "py311"
+
+# Max line length (matches Black default)
+line-length = 88
+
+# Directories / files to skip
+exclude = [
+    ".git",
+    ".github",
+    ".pytest_cache",
+    ".ruff_cache",
+    "__pycache__",
+    "*.pyc",
+]
+
+[tool.ruff.lint]
+# Rule sets enabled:
+#   E / W – pycodestyle errors & warnings
+#   F     – Pyflakes
+#   I     – isort (import ordering)
+#   UP    – pyupgrade (modern Python idioms)
+#   B     – flake8-bugbear (common pitfalls)
+#   C4    – flake8-comprehensions
+select = ["E", "W", "F", "I", "UP", "B", "C4"]
+
+# Rules intentionally ignored
+ignore = [
+    "E501",  # Line too long – handled by formatter
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["repolens"]
+
+[tool.ruff.format]
+# Use double quotes (Black-compatible)
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts   = "-v --tb=short"
